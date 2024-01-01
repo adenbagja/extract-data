@@ -5,9 +5,9 @@ print_3title() {
 }
 
 if command -v curl &> /dev/null; then
-    gcp_req='curl -s -f -H "Metadata-Flavor: True"'
+    gcp_req='curl -s -f -H "Metadata-Flavor: true"'
 elif command -v wget &> /dev/null; then
-    gcp_req='wget -q -O - --header "Metadata-Flavor: True"'
+    gcp_req='wget -q -O - --header "Metadata-Flavor: true"'
 else
     echo "Neither curl nor wget were found. Exiting."
     exit 1
