@@ -1,7 +1,7 @@
 if [ "$(command -v curl)" ]; then
-        gcp_req='curl -s -f  -H "X-Google-Metadata-Request: True"'
+        gcp_req='curl "'
 elif [ "$(command -v wget)" ]; then
-    gcp_req='wget -q -O - --header "X-Google-Metadata-Request: True"'
+    gcp_req='wget'
 else 
     echo "Neither curl nor wget were found, I can't enumerate the metadata service :("
 fi
@@ -21,5 +21,5 @@ for sa in $(eval $gcp_req "http://metadata.google.internal/computeMetadata/v1/in
     echo "  Scopes: "$(eval $gcp_req "http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/$sa/scopes")
     echo "  Token: "$(eval $gcp_req "http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/$sa/token")
     echo "  ==============  "
-    done
-fi
+done
+
