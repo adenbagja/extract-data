@@ -6,7 +6,7 @@ elif [ "$(command -v wget)" ]; then
     gcp_req='wget -q -O - --header "X-Google-Metadata-Request: True"'
 else 
     echo "Neither curl nor wget were found, I can't enumerate the metadata service :("
-if
+fi
 
 echo ""
 print_3title "Startup-script"
@@ -24,4 +24,4 @@ for sa in $(eval $gcp_req "http://metadata.google.internal/computeMetadata/v1/in
     echo "  Token: "$(eval $gcp_req "http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/$sa/token")
     echo "  ==============  "
 done
-if
+fi
