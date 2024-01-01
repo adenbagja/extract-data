@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if [ "$(command -v curl)" ]; then
         gcp_req='curl -s -f  -H "X-Google-Metadata-Request: True"'
 elif [ "$(command -v wget)" ]; then
@@ -23,5 +25,3 @@ for sa in $(eval $gcp_req "http://metadata.google.internal/computeMetadata/v1/in
     echo "  ==============  "
     done
 fi
-
-
